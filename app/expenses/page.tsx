@@ -1,4 +1,5 @@
-
+import ExpenseList from "../components/ExpenseList";
+import { Expense } from "@/types/expense";
 
 const Expenses = () => {
     const expenses =  [
@@ -10,8 +11,9 @@ const Expenses = () => {
     <div className="flex-col items-center justify-center p-24">
      <h1 className="text-3xl font-bold text-gray-800 mb-4">Expense List</h1>
       <p className="text-gray-600 mb-4">Here are your expenses:</p>
-       {/* Table*/}
-      <div className="overflow-x-auto">
+      <ExpenseList expenses={expenses} />
+       {/* Table */}
+      {/* <div className="overflow-x-auto">
       <table className="w-full border-collapse bg-white shadow-md rounded-lg">
         <thead>
           <tr className="bg-blue-600 text-white">
@@ -33,9 +35,9 @@ const Expenses = () => {
           ))}
         </tbody>
       </table>
-      </div>
+      </div> */}
          {/* Card*/}
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {/* <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {expenses.map((expense) => (
           <div
             key={expense.id}
@@ -46,7 +48,7 @@ const Expenses = () => {
             <p className="text-gray-500">{expense.category}</p>
           </div>
           ))}
-      </div>
+      </div> */}
     </div>
   )
 }
