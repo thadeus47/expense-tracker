@@ -5,6 +5,7 @@ const NewExpense = () => {
     const [title, setTitle] = useState("");
     const [amount, setAmount] = useState("");
     const [category, setCategory] = useState("");
+
   return (
     <div className="flex-col items-center justify-center p-24">
       <h1 className="text-3xl font-bold text-gray-800 mb-4">Add New Expense</h1>
@@ -51,6 +52,9 @@ const NewExpense = () => {
           Add Expense
         </button>
       </form>
+      <div className="mt-4 text-gray-600">
+        <p>Preview: {title} - ${amount} - {category}</p>
+      </div>
     </div>
   )
 }
