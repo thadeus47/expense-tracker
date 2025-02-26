@@ -20,7 +20,7 @@ export default function RootLayout({
         className="bg-gray-100"
       >
         {/* Navbar */}
-        <nav className="bg-blue-600 p-4 sticky top-0 shadow-md">
+        <nav className="bg-blue-700 p-4 sticky top-0 shadow-md">
           <ul className="flex space-x-8 text-white font-medium max-w-7xl mx-auto">
             <li>
               <Link href="/" className="hover:text-blue-200 transition-colors">
@@ -40,7 +40,7 @@ export default function RootLayout({
           </ul>
         </nav>
         {/* Page Content */}
-        <main className="max-w-7xl mx-auto p-6">
+        <main className="max-w-7xl mx-auto p-6 pt-16">
           {children}
           
         </main>

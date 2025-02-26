@@ -1,4 +1,5 @@
 'use client';
+
 import { Expense } from "@/types/expense"; 
 
 interface ExpenseListProps {
@@ -20,7 +21,7 @@ const ExpenseList = ({ expenses }: ExpenseListProps) => {
             {expenses.map((expense, index) =>(
                 <tr
                   key={expense.id}
-                  className={index % 2 ===0 ? 'bg-gray-50' : 'bg-white'}
+                  className={`${index % 2 === 0 ? "bg-gray-50" : "bg-white"} hover:bg-blue-50 transition-colors`}
                 >
                     <th className="p-3 text-gray-800">{expense.id}</th>
                     <th className="p-3 text-gray-800">{expense.amount}</th>

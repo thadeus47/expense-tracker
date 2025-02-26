@@ -9,7 +9,7 @@ const NewExpense = () => {
   return (
     <div className="flex-col items-center justify-center p-24">
       <h1 className="text-3xl font-bold text-gray-800 mb-4">Add New Expense</h1>
-      <form action="" className="space-y-4 max-w-md mx-auto">
+      <form action="" className="space-y-4 max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
         <div >
             <label htmlFor="title" className="block text-gray-700">Title</label>
             <input 
@@ -47,7 +47,7 @@ const NewExpense = () => {
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
+          className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition-colors"
         >
           Add Expense
         </button>
