@@ -3,4 +3,5 @@ export interface Expense {
     title: string;
     amount: number;
     category: string;
+    user_id?: string;
   }
