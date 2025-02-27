@@ -1,15 +1,22 @@
 import ExpenseList from "../components/ExpenseList";
-// import { Expense } from "@/types/expense";
-import { supabase } from "@/lib/superbase";
+import { Expense } from "@/types/expense";
+import { createServerClient } from "@/lib/superbase";
 const Expenses = async () => {
-     
+  const supabase = createServerClient();
   const { data, error } = await supabase.from("expenses").select("*");
-  console.log("Data:", data, "Error:", error);
-    const expenses =  [
-        {id: 1, title: "Lunch", amount: 10, category: "food"},
-        {id: 2, title: "Bus Fare", amount: 2.5, category: "Travel"},
-        {id: 3, title: "Electricity Bill", amount: 75, category: "Bills"}
-    ]
+
+  if (error) {
+    console.error("Error fetching expenses:", error);
+    return (
+      <div>
+        <h1 className="text-3xl font-bold text-gray-800 mb-4">Expense List</h1>
+        <p className="text-red-600">Failed to load expenses. Please try again later.</p>
+      </div>
+    );
+  }
+
+  const expenses: Expense[] = data || [];
+  
   return (
     <div className="flex-col items-center justify-center p-24 text-center2.5">
      <h1 className="text-3xl font-bold text-gray-800 mb-4">Expense List</h1>
