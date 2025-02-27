@@ -4,6 +4,7 @@ import { Expense } from "@/types/expense";
 
 const ExpenseFetcher =  async () => {
     const supabase = createServerClient();
+
     const { data, error } = await supabase.from("expenses").select("*");
   
     if (error) {
