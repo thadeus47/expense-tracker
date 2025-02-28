@@ -1,5 +1,7 @@
 'use client';
+
 import { useState } from "react";
+import { addExpense } from "@/app/expenses/action";
 
 const NewExpense = () => {
     const [title, setTitle] = useState("");
@@ -9,11 +11,12 @@ const NewExpense = () => {
   return (
     <div className="flex-col items-center justify-center p-24">
       <h1 className="text-3xl font-bold text-gray-800 mb-4">Add New Expense</h1>
-      <form action="" className="space-y-4 max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+      <form action={addExpense} className="space-y-4 max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
         <div >
             <label htmlFor="title" className="block text-gray-700">Title</label>
             <input 
               id="title"
+              name="title"
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -24,6 +27,7 @@ const NewExpense = () => {
           <label htmlFor="amount" className="block text-gray-700">Amount</label>
           <input
             id="amount"
+            name="amount"
             type="number"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
@@ -34,6 +38,7 @@ const NewExpense = () => {
           <label htmlFor="category" className="block text-gray-700">Category</label>
           <select
             id="category"
+            name="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"

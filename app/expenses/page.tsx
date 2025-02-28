@@ -13,7 +13,7 @@ const Expenses =  () => {
         fallback={<p className="text-red-600">Error loading expenses.</p>}
       >
         <Suspense
-          fallback={<div className="text-gray-600 animate-pulse">Loading expenses...</div>}
+          fallback={<div className="text-gray-600 animate-pulse ">Loading expenses...</div>}
         >
           <ExpenseFetcher />
         </Suspense>
