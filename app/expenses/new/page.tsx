@@ -2,16 +2,27 @@
 
 import { useState } from "react";
 import { addExpense } from "@/app/expenses/action";
+import Link from "next/link";
 
 const NewExpense = () => {
     const [title, setTitle] = useState("");
     const [amount, setAmount] = useState("");
     const [category, setCategory] = useState("");
+    const [error, setError] = useState<string | null>(null);
+
+    const handleSubmit = async (formData: FormData) => {
+      try {
+        await addExpense(formData);
+      } catch (err) {
+        setError((err as Error).message);
+      }
+    };
 
   return (
     <div className="flex-col items-center justify-center p-24">
       <h1 className="text-3xl font-bold text-gray-800 mb-4">Add New Expense</h1>
-      <form action={addExpense} className="space-y-4 max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+      <form action={handleSubmit} className="space-y-4 max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+      {error && <p className="text-red-600">{error}</p>}
         <div >
             <label htmlFor="title" className="block text-gray-700">Title</label>
             <input 
@@ -56,7 +67,14 @@ const NewExpense = () => {
         >
           Add Expense
         </button>
+        <Link
+        href="/expenses"
+        className="mt-4 inline-block text-blue-600 hover:underline"
+      >
+        Back to Expenses
+      </Link>
       </form>
+      
       <div className="mt-4 text-gray-600">
         <p>Preview: {title} - ${amount} - {category}</p>
       </div>

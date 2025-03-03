@@ -1,8 +1,8 @@
 import { createServerClient } from "@/lib/superbase";
 import { updateExpense } from "@/app/expenses/action";
+import Link from "next/link";
+
 // creates an async component that receives an expense ID through params.
-
-
 const EditExpense = async ({ params }: { params: { id: string } }) => {
   // fetches the specific expense data from Supabase using the provided ID.
   const supabase = createServerClient();
@@ -71,6 +71,12 @@ const EditExpense = async ({ params }: { params: { id: string } }) => {
           Save Changes
         </button>
       </form>
+      <Link
+        href="/expenses"
+        className="mt-4 inline-block text-blue-600 hover:underline"
+      >
+        Back to Expenses
+      </Link>
     </div>
   );
 };
