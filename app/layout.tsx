@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
 import { auth, signOut } from "@/app/api/auth/[...nextauth]/route";
+import { Session } from "next-auth";
 
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
+  const session: Session | null  = await auth();
 
   return (
     <html lang="en">
@@ -53,7 +54,7 @@ export default async function RootLayout({
                   </button>
                 </form>
               ) : (
-                <Link href="/api/auth/signin" className="hover:text-blue-200 transition-colors">
+                <Link href="/signin" className="hover:text-blue-200 transition-colors">
                   Sign In
                 </Link>
               )}

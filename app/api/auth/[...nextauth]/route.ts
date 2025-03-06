@@ -8,6 +8,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: SupabaseAdapter({
     url: process.env.NEXT_PUBLIC_SUPABASE_URL!,
     secret: process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
   }),
   // sets up Google OAuth authentication with credentials stored in environment variables.
   providers: [
@@ -24,3 +25,5 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
 });
+
+
