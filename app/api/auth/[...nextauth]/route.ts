@@ -2,13 +2,15 @@ import NextAuth from "next-auth";
 import { SupabaseAdapter } from "@auth/supabase-adapter";
 import GoogleProvider from "next-auth/providers/google";
 
-//exports essential authentication functions that will be used throughout the application:
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
   // configures Supabase as the database adapter for storing user sessions and authentication data.
+  
   adapter: SupabaseAdapter({
     url: process.env.NEXT_PUBLIC_SUPABASE_URL!,
     secret: process.env.SUPABASE_SERVICE_ROLE_KEY!,
-    supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    anonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    
   }),
   // sets up Google OAuth authentication with credentials stored in environment variables.
   providers: [
