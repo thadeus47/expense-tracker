@@ -1,21 +1,19 @@
-"use client";
-
-import { signIn } from "@/app/api/auth/[...nextauth]/route";  
+import { signIn } from "@/app/api/auth/[...nextauth]/route";
 
 export default function SignInPage() {
-  
-
-  const handleSignIn = async () => {
-    await signIn("google", { redirectTo: "/expenses" });
-  };
-
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
         <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
           Sign In to Expense Tracker
         </h1>
-        <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); handleSignIn(); }}>
+        <form
+           action={async () => {
+             "use server";
+             const result = await signIn("google", { redirectTo: "/expenses" });
+             console.log("SignIn Result:", result);
+           }}
+        >
           <button
             type="submit"
             className="w-full bg-blue-600 text-white p-3 rounded hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"

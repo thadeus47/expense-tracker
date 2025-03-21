@@ -1,9 +1,11 @@
 import { createClient } from "@supabase/supabase-js";
 
-// Server-side client (no cookies needed yet)
 export const createServerClient = () => {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-
-  return createClient(supabaseUrl, supabaseAnonKey);
+  const client = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+  // console.log("Supabase URL:", process.env.NEXT_PUBLIC_SUPABASE_URL);
+  // console.log("Supabase Anon Key:", process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+  return client;
 };
