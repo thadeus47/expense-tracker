@@ -8,6 +8,11 @@ interface ExpenseListProps {
 }
 
 const ExpenseList = ({ expenses }: ExpenseListProps) => {
+
+  if (!expenses.length) {
+    return <p className="text-gray-500">No expenses yet.</p>;
+  }
+  
   return (
    <div className="overflow-x-auto">
     <table className="w-full border-collapse bg-white shadow-md rounded-lg">
